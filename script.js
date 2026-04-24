@@ -24,7 +24,6 @@ function bresenhamLine(x0, y0, x1, y1, color) {
         if (x0 === x1 && y0 === y1) break;
         
         let e2 = 2 * err;
-        //Aquí se calcula el parámetro de decisión p, con la ecuación de bresenham
         if (e2 > -dy) {
             err -= dy;
             x0 += sx;
@@ -34,6 +33,30 @@ function bresenhamLine(x0, y0, x1, y1, color) {
             y0 += sy;
         }
     }
+}
+/**
+ * Implementación del algoritmo de Punto Medio para circunferencias.
+ * Utiliza simetría de ocho puntos.
+ */
+function drawCircle(centerX, centerY, radius, color) {
+    let x = 0;
+    let y = radius;
+    let p = 1 - radius; //El parametro p es de la decision inicial, se utiliza para hallar e punto medio
+    
+    // Función auxiliar que sirve para dibujar los 8 puntos simétricos
+    const plotCirclePoints = (cx, cy, x, y, color) => {
+        //Se implementa drawpixel para colocar los 8 puntos simetricos que debe tener la circunferencia y los dibuje en el canva.
+        drawPixel(ctx, cx + x, cy + y, color);
+        drawPixel(ctx, cx - x, cy + y, color);
+        drawPixel(ctx, cx + x, cy - y, color);
+        drawPixel(ctx, cx - x, cy - y, color);
+        drawPixel(ctx, cx + y, cy + x, color);
+        drawPixel(ctx, cx - y, cy + x, color);
+        drawPixel(ctx, cx + y, cy - x, color);
+        drawPixel(ctx, cx - y, cy - x, color);
+
+    };
+
 }
 
 /**
