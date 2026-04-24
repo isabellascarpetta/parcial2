@@ -41,7 +41,7 @@ function bresenhamLine(x0, y0, x1, y1, color) {
 function drawCircle(centerX, centerY, radius, color) {
     let x = 0;
     let y = radius;
-    let p = 1 - radius; //El parametro p es de la decision inicial, se utiliza para hallar e punto medio
+    let p = 1 - radius; //El parametro p es de la decision inicial, se utiliza para hallar el punto medio
     
     // Función auxiliar que sirve para dibujar los 8 puntos simétricos
     const plotCirclePoints = (cx, cy, x, y, color) => {
@@ -97,3 +97,35 @@ function getPolygonVertices(centerX, centerY, sides, radius) {
     
     return vertices;
 }
+//Función principal para integrar la composición geométrica.
+ 
+function init() {//Función para inicializar. El canva queda centrado 
+    const centerX = canvas.width / 2; 
+    const centerY = canvas.height / 2;
+    const R = 200; // Radio del polígono a cada vertice del poligono 
+    const n = Math.floor(Math.random() * (10 - 5 + 1)) + 5; // n aleatorio entre 5 y 10, se pone math.floor para que sea aleatorio
+
+    console.log(`Generando polígono de #{n} lados con n aleatorio.`);
+
+    //Llamar a los vertices
+    const vertices = getPolygonVertices(centerX, centerY, n, R);
+
+    //Aquí se inicia el for para empezar a conectar el primer vertice con el ultimo y de esta manera general el circulo
+    for (let i = 0; i < n; i++) {
+        const start = vertices[i];
+        const end = vertices[(i + 1) % n];
+        
+        bresenhamLine(start.x, start.y, end.x, end.y, "#2c3e50"); //Dibujua la linea
+    }
+
+    // La circunferencia que nos pide es de R/4 entonces se empieza a trazar cada línea
+    const circleRadius = R / 4;
+    vertices.forEach(v => {
+        drawCircle(v.x, v.y, circleRadius, "#e74c3c");
+    });
+    
+
+// Ejecutar al cargar la ventana
+window.onload = init;   
+}
+
