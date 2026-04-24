@@ -10,6 +10,8 @@ Todo el trazado debe realizarse píxel a píxel.
  Estudiante: ISABELLA SCARPETTA ESCOBAR
 
 */
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
 // Función de apoyo para dibujar un píxel individual
 function drawPixel(ctx, x, y, color = "#000000") {
@@ -137,8 +139,8 @@ function init() {//Función para inicializar. El canva queda centrado
         drawCircle(v.x, v.y, circleRadius, "#e74c3c");
     });
     
-
+}
 // Ejecutar al cargar la ventana
 window.onload = init;   
-}
+
 
