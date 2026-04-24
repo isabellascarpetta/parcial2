@@ -1,3 +1,16 @@
+/*
+Reto: Desarrollar un script en JavaScript que, al cargar la página,
+genere automáticamente una figura compuesta por un polígono regular de n lados 
+(donde n es un número aleatorio entre 5 y 10). En cada vértice del polígono, 
+se debe trazar una circunferencia de radio R/4 (donde R es el radio del polígono). 
+Todo el trazado debe realizarse píxel a píxel.
+----------
+ Universidad - Facultad de Ingeniería
+ Asignatura: Introducción a la Computación Gráfica
+ Estudiante: ISABELLA SCARPETTA ESCOBAR
+
+*/
+
 // Función de apoyo para dibujar un píxel individual
 function drawPixel(ctx, x, y, color = "#000000") {
     ctx.fillStyle = color;
