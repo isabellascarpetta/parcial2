@@ -81,7 +81,7 @@ function drawCircle(centerX, centerY, radius, color) {
             y--;
             p += 2 * (x - y) + 1;
         }
-        plotCirclePoints(centerX, centerY, x, y, color);
+        plot(x, y);
     }
     };
 
@@ -142,5 +142,6 @@ function init() {//Función para inicializar. El canva queda centrado
 }
 // Ejecutar al cargar la ventana
 window.onload = init;   
+// Link chatgpt: https://chatgpt.com/share/69eb9242-b2ac-83e9-8a29-a150b547f5e9
 
 
