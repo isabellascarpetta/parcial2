@@ -55,6 +55,19 @@ function drawCircle(centerX, centerY, radius, color) {
         drawPixel(ctx, cx + y, cy - x, color);
         drawPixel(ctx, cx - y, cy - x, color);
 
+    plotCirclePoints(centerX, centerY, x, y, color);
+
+    while (x < y) {
+        x++;
+        /* Aquí se evalua si hay error para entonces continuar con la siguiente línea*/
+        if (p < 0) {
+            p += 2 * x + 1;
+        } else {
+            y--;
+            p += 2 * (x - y) + 1;
+        }
+        plotCirclePoints(centerX, centerY, x, y, color);
+    }
     };
 
 }
@@ -67,6 +80,20 @@ function drawCircle(centerX, centerY, radius, color) {
  * @returns {Array} Arreglo de objetos {x, y}
  */
 function getPolygonVertices(centerX, centerY, sides, radius) {
-    // Desarrollo del estudiante (Uso de Math.sin/Math.cos y retorno de datos)
+   
+    //Se utiliza el círculo unitario multiplicado por el radio 
+    //para obtener las coordenadas cartesianas de cada vértice. 
+    //Es dividido por sides que es el numero de lados
+    
+    const vertices = [];
+    const angleStep = (2 * Math.PI) / sides;
 
+    for (let i = 0; i < sides; i++) {
+        const angle = i * angleStep;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        vertices.push({ x: x, y: y });
+    }
+    
+    return vertices;
 }
